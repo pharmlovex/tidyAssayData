@@ -1,9 +1,9 @@
 Package: tidyAssayData
 Type: Package
 Title: Transform colunmn name of assay data (tidyAssayData)
-Version: 0.1.0
+Version: 0.2.0
 Author: Ifedayo Ojo
-Maintainer: The package maintainer <ifedayoo.ojo@gmail.com>
+Maintainer: Ifedayo Ojo <ifedayoo.ojo@gmail.com>
 Description: This function takes an assay data frame whose column names need tidy before analysis and transform them to the desired columns.
 License: MIT + file LICENSE
 Encoding: UTF-8
