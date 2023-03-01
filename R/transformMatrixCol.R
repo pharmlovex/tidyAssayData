@@ -1,3 +1,17 @@
+#' Title
+#' @title Tidy assay data column names
+#' @description This function takes an assay data frame whose column names need
+#' before analysis.
+#' @param expMat A matrix data frame columns need to be cleaned.
+#' @param Sep The delimiter that joins the appendage to desired column name
+#' @param nSep The count of the delimiter in the each column name.
+#' @param pos The position of the desired column name in Assay column name
+#'
+#' @return a data frame, with desired column name.
+#' @export
+#' @import dplyr
+#' @importFrom stringr str_split
+#' @examples
 transformMatrixCol <- function(expMat, Sep, nSep, pos) {
   # Validate input parameters
   if(!is.data.frame(expMat)){
@@ -17,7 +31,7 @@ transformMatrixCol <- function(expMat, Sep, nSep, pos) {
   # Transform the colunm of the matrix
   assay.df <- expMat %>%
     colnames()  %>%
-    str_split(paste0("[", Sep, "]"), n = (nSep + 1)) %>%
+    stringr::str_split(paste0("[", Sep, "]"), n = (nSep + 1)) %>%
     unlist() %>%
     matrix(ncol = (nSep + 1), byrow = T) %>%
     as.data.frame()
@@ -27,4 +41,4 @@ transformMatrixCol <- function(expMat, Sep, nSep, pos) {
   return(expMat)
 }
 
-)
+
