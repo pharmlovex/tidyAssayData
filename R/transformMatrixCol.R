@@ -31,7 +31,7 @@ transformMatrixCol <- function(expMat, Sep, nSep, pos) {
   # Transform the colunm of the matrix
   assay.df <- expMat %>%
     colnames()  %>%
-    stringr::str_split(paste0("[", Sep, "]"), n = (nSep + 1)) %>%
+    str_split(paste0("[", Sep, "]"), n = (nSep + 1)) %>%
     unlist() %>%
     matrix(ncol = (nSep + 1), byrow = T) %>%
     as.data.frame()
