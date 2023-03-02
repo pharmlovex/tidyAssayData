@@ -7,7 +7,7 @@
 transformMatrixCol(expMat, Sep, nSep, pos)
 }
 \arguments{
-\item{expMat}{A matrix data frame columns need to be cleaned.}
+\item{expMat}{A matrix data frame.}
 
 \item{Sep}{The delimiter that joins the appendage to desired column name}
 
@@ -19,9 +19,13 @@ transformMatrixCol(expMat, Sep, nSep, pos)
 a data frame, with desired column name.
 }
 \description{
-This function takes an assay data frame whose column names need
-before analysis.
+Before performing differential expression genes analysis on expression data, it is important
+to ensure that the column names of the assay data is same with sample ID of the clinical or metadata.
+This function therefore help to transform the assay data column names to suit the sample name in the metadata.
 }
 \details{
 Title
+}
+\examples{
+transformMatrixCol(Exprdata, Sep = ".", nSep = 2, pos = 2)
 }

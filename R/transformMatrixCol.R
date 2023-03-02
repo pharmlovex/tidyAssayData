@@ -1,8 +1,10 @@
 #' Title
 #' @title Tidy assay data column names
-#' @description This function takes an assay data frame whose column names need
-#' before analysis.
-#' @param expMat A matrix data frame columns need to be cleaned.
+#' @description Before performing differential expression genes analysis on expression data, it is important
+#' to ensure that the column names of the assay data is same with sample ID of the clinical or metadata.
+#' This function therefore help to transform the assay data column names to suit the sample name in the metadata.
+#'
+#' @param expMat A matrix data frame.
 #' @param Sep The delimiter that joins the appendage to desired column name
 #' @param nSep The count of the delimiter in the each column name.
 #' @param pos The position of the desired column name in Assay column name
@@ -11,7 +13,7 @@
 #' @export
 #' @import dplyr
 #' @importFrom stringr str_split
-#' @examples
+#' @examples transformMatrixCol(Exprdata, Sep = ".", nSep = 2, pos = 2)
 transformMatrixCol <- function(expMat, Sep, nSep, pos) {
   # Validate input parameters
   if(!is.data.frame(expMat)){
