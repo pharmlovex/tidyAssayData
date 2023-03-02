@@ -1,19 +1,37 @@
-#' Title
+#' Data wrangling to ease differential gene expression workflow
 #' @title Tidy assay data column names
-#' @description Before performing differential expression genes analysis on expression data, it is important
-#' to ensure that the column names of the assay data is same with sample ID of the clinical or metadata.
-#' This function therefore help to transform the assay data column names to suit the sample name in the metadata.
+#' @description In transcriptomics study, one of the objectives is to compare gene
+#' expression between two or more groups in other to explore the molecular
+#' mechanism that differentiates the groups. However, before performing differential
+#' expression genes analysis on expression data, it is important to ensure that
+#' the column names of the assay data is same with sample ID of the clinical or metadata.
+#' Unfortunately, most count data obtained from raw unprocessed data have their column
+#' names in a messy form.\cr
+#'
+#' This function therefore help to transform the assay data column names to suit
+#' the sample name in the metadata. Thereby handling the daunting task of removing the attached
+#' appendages and saving time to focus on what matters.
+#'
+#'
+#'
+#'
+#'
 #'
 #' @param expMat A matrix data frame.
 #' @param Sep The delimiter that joins the appendage to desired column name
 #' @param nSep The count of the delimiter in the each column name.
 #' @param pos The position of the desired column name in Assay column name
 #'
-#' @return a data frame, with desired column name.
+#' @return A same matrix data frame, with desired column name.
 #' @export
 #' @import dplyr
 #' @importFrom stringr str_split
 #' @examples
+#'
+#' \dontrun{
+#' library(tidyAssayData)
+#' transformMatrixCol(Exprdata, Sep = ".", nSep = 2, pos = 2)
+#' }
 #'
 #'
 transformMatrixCol <- function(expMat, Sep, nSep, pos) {
