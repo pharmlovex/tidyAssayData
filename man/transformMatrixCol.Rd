@@ -26,6 +26,3 @@ This function therefore help to transform the assay data column names to suit th
 \details{
 Title
 }
-\examples{
-transformMatrixCol(Exprdata, Sep = ".", nSep = 2, pos = 2)
-}

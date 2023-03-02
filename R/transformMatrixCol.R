@@ -13,7 +13,9 @@
 #' @export
 #' @import dplyr
 #' @importFrom stringr str_split
-#' @examples transformMatrixCol(Exprdata, Sep = ".", nSep = 2, pos = 2)
+#' @examples
+#'
+#'
 transformMatrixCol <- function(expMat, Sep, nSep, pos) {
   # Validate input parameters
   if(!is.data.frame(expMat)){
