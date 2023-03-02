@@ -1,0 +1,81 @@
+---
+title: "Tidy matrix column"
+output: learnr::tutorial
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+## Data Wrangling
+
+### An important task in differential expression analysis workflow is the data cleaning. The column name is more often than not presented with extensions or appendages which as to be removed to make the count data column names suitable for intergation with the metadata or clinical data. 
+
+This tutorial gives a walk through on how to use the `tidyAssaydata` package to perform the task of cleaning the count data column. 
+
+## Step 1
+### Install the required packages if you dont have it installed. 
+
+```{r Install packages}
+
+# Install devtools from CRAN
+#install.packages("devtools")
+
+# Or install the development version from GitHub:
+
+#devtools::install_github("r-lib/devtools")
+
+# load library
+library(devtools)
+
+devtools::install_github("pharmlovex/tidyAssayData")
+
+```
+
+## Step 2
+
+### Import desired count data
+
+```{r Load the data to work environment}
+# Load library
+library(tidyAssayData)
+library(dplyr)
+
+# Load count data
+df <- read.delim("https://raw.githubusercontent.com/biodata-machine/tidyAssayData/main/counts.txt", 
+                 sep = "", header = TRUE, row.names = 1, comment.char = "#", dec = ".")
+
+# Remove first rows as it is not required for the analysis 
+df = df %>% 
+     select(-c(1:5))
+
+head(df,5)
+
+```
+
+## Step 3
+
+### Inspect the colunm names to identify to;
+-   Sep = The separator between the sample name and appendage(s) 
+-   nSep = Number of the separator 
+-   pos = The position of the sample ID.
+
+```{r Use the function}
+# tidy the column names 
+
+df_tidyColnames <- transformMatrixCol(df, Sep = ".", nSep=2, pos = 2)
+
+head(df_tidyColnames,5)
+
+```
+
+```{r}
+```
+
+
+```{r}
+```
+
