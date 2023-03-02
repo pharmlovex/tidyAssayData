@@ -55,7 +55,73 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-This function takes an assay data frame whose column names need tidy before analysis and transform them to the desired columns.
+<div class="section level1">
+<div class="page-header"><h1 id="tidyassaydata">tidyAssayData<a class="anchor" aria-label="anchor" href="#tidyassaydata"></a>
+</h1></div>
+<p>A package that provides function that tidy assay data column names to suit clinical data for differential gene expression analysis. This is a duanting task we have to performing when working with a raw count data of a DNA microarray or RNA sequence data. These count data are usually presented with colunm names that have sample id attached with other appendages with help of a delimiter. This function therefore help to tidy the count data colunm names so it can be a true identifier for the samples in the study.</p>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
+<p>Install tidyAssayData Package</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Install devtools from CRAN</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Or install the development version from GitHub:</span></span>
+<span></span>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"r-lib/devtools"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># load library</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://devtools.r-lib.org/" class="external-link">devtools</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"pharmlovex/tidyAssayData"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="usageexamples">Usage/Examples<a class="anchor" aria-label="anchor" href="#usageexamples"></a>
+</h2>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Load library</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">tidyAssayData</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Load count data</span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.delim</a></span><span class="op">(</span><span class="st">"counts.txt"</span>, sep <span class="op">=</span> <span class="st">""</span>, header <span class="op">=</span> <span class="cn">TRUE</span>, row.names <span class="op">=</span> <span class="fl">1</span>,</span>
+<span></span>
+<span>                                comment.char <span class="op">=</span> <span class="st">"#"</span>, dec <span class="op">=</span> <span class="st">"."</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">df</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># tidy the colunm names </span></span>
+<span></span>
+<span><span class="va">df_tidyColnames</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/transformMatrixCol.html">transformMatrixCol</a></span><span class="op">(</span><span class="va">df</span>, Sep <span class="op">=</span> <span class="st">"."</span>, nSep<span class="op">=</span><span class="fl">2</span>, pos <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">df_tidyColnames</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="id_-about-me">🚀 About Me<a class="anchor" aria-label="anchor" href="#id_-about-me"></a>
+</h2>
+<p>I’m a bioinformatics developer…</p>
+</div>
+<div class="section level2">
+<h2 id="license">License<a class="anchor" aria-label="anchor" href="#license"></a>
+</h2>
+<p><a href="https://choosealicense.com/licenses/mit/" class="external-link">MIT</a></p>
+</div>
+<div class="section level2">
+<h2 id="acknowledgements">Acknowledgements<a class="anchor" aria-label="anchor" href="#acknowledgements"></a>
+</h2>
+<ul>
+<li><a href="https://awesomeopensource.com/project/elangosundar/awesome-README-templates" class="external-link">Awesome Readme Templates</a></li>
+<li><a href="https://github.com/matiassingers/awesome-readme" class="external-link">Awesome README</a></li>
+<li><a href="https://bulldogjob.com/news/449-how-to-write-a-good-readme-for-your-github-project" class="external-link">How to write a Good readme</a></li>
+</ul>
+</div>
+<div class="section level2">
+<h2 id="badges">Badges<a class="anchor" aria-label="anchor" href="#badges"></a>
+</h2>
+<p><a href="https://choosealicense.com/licenses/mit/" class="external-link"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="MIT License"></a></p>
+</div>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
