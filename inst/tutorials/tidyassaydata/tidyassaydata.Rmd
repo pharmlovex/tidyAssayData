@@ -71,11 +71,3 @@ df_tidyColnames <- transformMatrixCol(df, Sep = ".", nSep=2, pos = 2)
 head(df_tidyColnames,5)
 
 ```
-
-```{r}
-```
-
-
-```{r}
-```
-
