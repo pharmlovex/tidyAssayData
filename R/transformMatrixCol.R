@@ -50,17 +50,37 @@ transformMatrixCol <- function(expMat, Sep, nSep, pos) {
 
   }
 
-  # Transform the colunm of the matrix
-  assay.df <- expMat %>%
-    colnames()  %>%
-    str_split(paste0("[", Sep, "]"), n = (nSep + 1)) %>%
-    unlist() %>%
-    matrix(ncol = (nSep + 1), byrow = T) %>%
-    as.data.frame()
-  colnames(assay.df) <- LETTERS[1:(nSep + 1)]
-  colnames(expMat) <- assay.df[, pos]
-  rm(assay.df)
-  return(expMat)
+  if(pos == 1){
+    # Transform the colunm of the matrix
+    assay.df <- expMat %>%
+      colnames()  %>%
+      str_split(paste0("[", Sep, "]"), n = 2) %>%
+      unlist() %>%
+      matrix(ncol = 2, byrow = T) %>%
+      as.data.frame()
+    colnames(assay.df) <- LETTERS[1:2]
+    colnames(expMat) <- assay.df[, pos]
+    rm(assay.df)
+    return(expMat)
+  }else{
+    strings = colnames(df)
+    checklist<- lapply(strings, FUN = str_count, pattern = paste0("[", Sep, "]"))
+    if (all(sapply(checklist, FUN = identical, checklist[[1]]))){
+      # Transform the colunm of the matrix
+      assay.df <- expMat %>%
+        colnames()  %>%
+        str_split(paste0("[", Sep, "]"), n = (nSep + 1)) %>%
+        unlist() %>%
+        matrix(ncol = (nSep + 1), byrow = T) %>%
+        as.data.frame()
+      colnames(assay.df) <- LETTERS[1:(nSep + 1)]
+      colnames(expMat) <- assay.df[, pos]
+      rm(assay.df)
+      return(expMat)
+    }else{
+      stop(cat("Column names lenghts are not the same, try another method"))
+    }
+  }
 }
 
 
