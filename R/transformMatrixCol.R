@@ -25,8 +25,7 @@
 #' @return A same matrix data frame, with desired column name.
 #' @export
 #' @import dplyr
-#' @importFrom stringr str_split
-#' @importFrom stringr str_count
+#' @importFrom stringr str_split str_count
 #' @examples
 #'
 #' \dontrun{
@@ -65,7 +64,8 @@ transformMatrixCol <- function(expMat, Sep, nSep, pos) {
     return(expMat)
   }else{
     strings = colnames(expMat)
-    checklist<- lapply(strings, FUN = stringr::str_count, pattern = paste0("[", Sep, "]"))
+    # Validate if the delimiter count is same for all the column names
+    checklist<- lapply(strings, str_count, pattern = paste0("[", Sep, "]"))
     if (all(sapply(checklist, FUN = identical, checklist[[1]]))){
       # Transform the colunm of the matrix
       assay.df <- expMat %>%

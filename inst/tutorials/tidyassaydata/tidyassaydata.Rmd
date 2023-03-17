@@ -27,6 +27,7 @@ This tutorial gives a walk through on how to use the `tidyAssaydata` package to 
 
 # load library
 library(devtools)
+library(stringr)
 
 devtools::install_github("pharmlovex/tidyAssayData")
 
