@@ -2,4 +2,5 @@
 
 export(transformMatrixCol)
 import(dplyr)
+importFrom(stringr,str_count)
 importFrom(stringr,str_split)

@@ -2,22 +2,19 @@
 title: "Tidy matrix column"
 output: learnr::tutorial
 runtime: shiny_prerendered
+editor_options: 
+  chunk_output_type: inline
 ---
-
-```{r setup, include=FALSE}
-library(learnr)
-knitr::opts_chunk$set(echo = FALSE)
-```
-
 
 ## Data Wrangling
 
-### An important task in differential expression analysis workflow is the data cleaning. The column name is more often than not presented with extensions or appendages which as to be removed to make the count data column names suitable for intergation with the metadata or clinical data. 
+### An important task in differential expression analysis workflow is data cleaning. The column name is often presented with extensions or appendages that are to be removed to make the count data column names suitable for integration with the metadata or clinical data.
 
-This tutorial gives a walk through on how to use the `tidyAssaydata` package to perform the task of cleaning the count data column. 
+This tutorial gives a walk through on how to use the `tidyAssaydata` package to perform the task of cleaning the count data column.
 
 ## Step 1
-### Install the required packages if you dont have it installed. 
+
+### Install the required packages if you dont have it installed.
 
 ```{r Install packages}
 
@@ -59,8 +56,9 @@ head(df,5)
 ## Step 3
 
 ### Inspect the colunm names to identify to;
--   Sep = The separator between the sample name and appendage(s) 
--   nSep = Number of the separator 
+
+-   Sep = The separator between the sample name and appendage(s)
+-   nSep = Number of the separator
 -   pos = The position of the sample ID.
 
 ```{r Use the function}

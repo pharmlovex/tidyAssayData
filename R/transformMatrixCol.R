@@ -26,6 +26,7 @@
 #' @export
 #' @import dplyr
 #' @importFrom stringr str_split
+#' @importFrom stringr str_count
 #' @examples
 #'
 #' \dontrun{
@@ -63,8 +64,8 @@ transformMatrixCol <- function(expMat, Sep, nSep, pos) {
     rm(assay.df)
     return(expMat)
   }else{
-    strings = colnames(df)
-    checklist<- lapply(strings, FUN = str_count, pattern = paste0("[", Sep, "]"))
+    strings = colnames(expMat)
+    checklist<- lapply(strings, FUN = stringr::str_count, pattern = paste0("[", Sep, "]"))
     if (all(sapply(checklist, FUN = identical, checklist[[1]]))){
       # Transform the colunm of the matrix
       assay.df <- expMat %>%
